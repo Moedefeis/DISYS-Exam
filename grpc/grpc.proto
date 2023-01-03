@@ -1,3 +1,32 @@
 syntax = "proto3";
 package grpc;
 option go_package = "https://github.com/Moedefeis/DISYS-Exam;grpc";
+
+service dictionary {
+    rpc add (AddRequest) returns (AddResponse) {}
+    rpc read (ReadRequest) returns (ReadResponse) {}
+    rpc crashed (ServerID) returns (Void) {}
+}
+
+message AddRequest {
+    string word = 1;
+    string def = 2;
+}
+
+message ReadRequest {
+    string word = 1;
+}
+
+message AddResponse {
+    bool success = 1;
+}
+
+message ReadResponse {
+    string def = 1;
+}
+
+message ServerID {
+    int32 id = 1;
+}
+
+message Void {}
